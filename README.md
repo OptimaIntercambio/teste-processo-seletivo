@@ -1,62 +1,31 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Teste processo seletivo desenvolvedor Full-Stack PHP
+Neste teste será avaliado sua forma de trabalhar, a qualidade de seu código e a solução adotada, portanto não haverá certo ou errado.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descrição do teste
 
-## About Laravel
+### Back-end
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Você deverá criar em Laravel (utilize a versão a sua escolha) e de preferencia utilizando algum banco de dados SQL como por exemplo MySQL ou Postgree os seguintes CRUD's (acrónimo do inglês Create, Read, Update and Delete) são as quatro operações básicas (criação, consulta, atualização e destruição de dados.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Idiomas;
+2. Moedas;
+**Obs.:** no ato da criação e atualização das moedas, você deverá consumir uma API para registar a cotação atual do câmbio. Recomendamos utilizar a https://docs.awesomeapi.com.br/api-de-moedas pela gratuidade e facilidade de uso.
+3. Países.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Você tem a livre escolha de modelar estas entidades na forma que achar melhor, no entanto fazemos apenas uma observação para a tabela de moedas na qual deverá registrar o câmbio (se julgar necessário, crie uma tabela de câmbio).
 
-## Learning Laravel
+### Front-end
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Você deverá criar todas as telas do CRUD utilizando o próprio Blade Template do Laravel juntamente com algum framework front-end tais como Bootstrap, Materializa etc.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+#### Pontos obrigatórios
+1. Utilizar o Git (crie uma branch deste repositório com seu nome e após finalizar o teste submeta um Pull-request de sua branch);
+2. Utilizar migrations do Laravel.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#### Diferenciais
+1. Utilize seeds para pré-popular seu banco;
+2. Utilize Docker para não termos problema de compatibilidade em nossa máquina ou nos mande um link do projeto em funcionamento em um servidor de sua preferência caso haja
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Quaisquer dúvidas, enviar um email para it@optimaintercambio.com.br.
+Bom teste!
