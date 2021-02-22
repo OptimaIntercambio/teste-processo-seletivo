@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\{
     PaisController,
-    IdiomaController
+    IdiomaController,
+    MoedaController,
 };
 
 /*
@@ -19,7 +20,7 @@ use App\Http\Controllers\Admin\{
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
 });
 
 // Rotas que requerem autenticação
@@ -31,6 +32,9 @@ Route::middleware(['auth'])->group(function() {
     Route::prefix('admin')->name('admin.')->group(function() {
         Route::resource('paises', PaisController::class);
         Route::resource('idiomas', IdiomaController::class);
+        Route::resource('moedas', MoedaController::class);
+
+        Route::get('/moedas/{id}/cambio', [MoedaController::class, 'cambio'])->name('moedas.cambio');
     });
 });
 

@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePais;
 use App\Models\Idioma;
-use App\Utils\FileHelper;
+use App\Models\Moeda;
 use App\Models\Pais;
+use App\Utils\FileHelper;
 use Illuminate\Http\Request;
 
 class PaisController extends Controller
@@ -30,7 +31,8 @@ class PaisController extends Controller
     public function create()
     {
         $idiomas = Idioma::latest()->get();
-        return view('admin.paises.create', compact('idiomas'));
+        $moedas = Moeda::latest()->get();
+        return view('admin.paises.create', compact('idiomas', 'moedas'));
     }
 
     /**
@@ -49,6 +51,8 @@ class PaisController extends Controller
 
         // Salva os idiomas falados no país
         $pais->idiomas()->attach($request->idiomas);
+        // Salva as moedas usadas no país
+        $pais->moedas()->attach($request->moedas);
 
         return redirect()
             ->route('admin.paises.index')
@@ -77,11 +81,14 @@ class PaisController extends Controller
         if (!$pais = Pais::find($id)) return redirect()->back();
 
         $idiomas = Idioma::latest()->get();
+        $moedas = Moeda::latest()->get();
         
         // Retorna uma lista com os ids de todos os idiomas falados no país
         $idiomas_pais = array_map(function($idioma) { return $idioma->id; }, iterator_to_array($pais->idiomas));
+        // Retorna uma lista com os ids de todas as moedas usadas no país
+        $moedas_pais = array_map(function($moeda) { return $moeda->id; }, iterator_to_array($pais->moedas));
 
-        return view('admin.paises.edit', compact('pais', 'idiomas', 'idiomas_pais'));
+        return view('admin.paises.edit', compact('pais', 'idiomas', 'idiomas_pais', 'moedas', 'moedas_pais'));
     }
 
     /**
@@ -106,6 +113,10 @@ class PaisController extends Controller
         // Salva os idiomas falados no país
         $pais->idiomas()->detach();
         $pais->idiomas()->attach($request->idiomas);
+
+        // Salva as moedas usadas no país
+        $pais->moedas()->detach();
+        $pais->moedas()->attach($request->moedas);
 
         return redirect()
             ->route('admin.paises.index')

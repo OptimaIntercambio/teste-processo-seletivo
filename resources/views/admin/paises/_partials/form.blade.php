@@ -19,7 +19,7 @@
 
     <div class="form-group">
         <label for="nome">Nome <span class="req">*</span></label>
-        <input type="text" name="nome" id="nome" class="form-control" aria-describedby="nomeHelp"
+        <input type="text" required name="nome" id="nome" class="form-control" aria-describedby="nomeHelp"
             value="{{ $pais->nome ?? old('nome') }}">
         <small id="nomeHelp" class="form-text text-muted">Nome do país exibido aos usuários
             (deve ser único).</small>
@@ -82,6 +82,17 @@
                 <option value="{{ $idioma->id }}"
                     {{ !empty($idiomas_pais) && in_array($idioma->id, $idiomas_pais) ? 'selected' : '' }}>
                     {{ $idioma->nome }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="moedas">Moedas</label>
+        <select multiple class="form-control" name="moedas[]" id="moedas">
+            @foreach ($moedas as $moeda)
+                <option value="{{ $moeda->id }}"
+                    {{ !empty($moedas_pais) && in_array($moeda->id, $moedas_pais) ? 'selected' : '' }}>
+                    {{ $moeda->nome }}
                 </option>
             @endforeach
         </select>

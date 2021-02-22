@@ -20,4 +20,12 @@ class Pais extends Model
     {
         return $this->belongsToMany(Idioma::class);
     }
+    
+    /**
+     * As moedas usadas no pais.
+     */
+    public function moedas()
+    {
+        return $this->belongsToMany(Moeda::class);
+    }
 }

@@ -20,6 +20,9 @@
                 <x-nav-link href="{{ route('admin.idiomas.index') }}" :active="request()->routeIs('admin.idiomas.*')">
                     {{ __('Idiomas') }}
                 </x-nav-link>
+                <x-nav-link href="{{ route('admin.moedas.index') }}" :active="request()->routeIs('admin.moedas.*')">
+                    {{ __('Moedas') }}
+                </x-nav-link>
             </ul>
 
             <!-- Right Side Of Navbar -->

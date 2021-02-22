@@ -15,22 +15,27 @@
     @csrf
     @method($method ?? 'POST')
 
-    <input type="hidden" name="id" value="{{ $idioma->id ?? null }}">
+    <input type="hidden" name="id" value="{{ $moeda->id ?? null }}">
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="nome">Nome <span class="req">*</span></label>
             <input type="text" required name="nome" id="nome" class="form-control" aria-describedby="nomeHelp"
-                value="{{ $idioma->nome ?? old('nome') }}">
-            <small id="nomeHelp" class="form-text text-muted">Nome do idioma exibido aos usuários
+                value="{{ $moeda->nome ?? old('nome') }}">
+            <small id="nomeHelp" class="form-text text-muted">Nome da moeda exibido aos usuários
                 (deve ser único).</small>
         </div>
 
         <div class="form-group col-md-6">
-            <label for="num_falantes">Número de Falantes</label>
-            <input type="number" min=0 name="num_falantes" id="num_falantes" class="form-control"
-                aria-describedby="num_falantesHelp" value="{{ $idioma->num_falantes ?? old('num_falantes') }}">
-            <small id="num_falantesHelp" class="form-text text-muted">Número de total de falantes do idioma.</small>
+            <label for="codigo">Código <span class="req">*</span></label>
+            <select class="form-control" required name="codigo" id="codigo">
+                @foreach ($api_codigos as $codigo)
+                    <option value="{{ $codigo }}"
+                        {{ isset($moeda->codigo) && $codigo == $moeda->codigo ? 'selected' : '' }}>
+                        {{ $codigo }}
+                    </option>
+                @endforeach
+            </select>
         </div>
     </div>
 
