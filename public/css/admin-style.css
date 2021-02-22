@@ -36,19 +36,21 @@
 /**
 #### HEADER
 */
+
 #page-description {
     font-size: 16px;
     margin-bottom: 20px;
 }
+
 .main-header #header-buttons {
     display: flex;
     justify-content: flex-end;
 }
 
-
 /**
 #### FORMS
 */
+
 label .req {
     color: red;
     font-weight: bold;
@@ -73,6 +75,52 @@ label .req {
     font-style: italic;
     font-size: 16px;
     margin-bottom: 5px;
+}
+
+/**
+#### TABLES
+*/
+
+.app-table {
+    margin-bottom: 20px !important;
+}
+
+/**
+#### DATATABLES
+*/
+
+.dataTables_wrapper {
+    margin: 20px 0;
+}
+
+main .dataTables_wrapper .dataTables_filter input, main .dataTables_wrapper .dataTables_length select {
+    border-radius: 5px;
+    border: 2px solid #818cf8;
+    margin-left: 10px;
+}
+
+main .dataTables_wrapper .dataTables_length select {
+    margin-right: 10px;
+}
+
+main .dataTables_wrapper .dataTables_filter input:focus, main .dataTables_wrapper .dataTables_length select:focus {
+    outline: none;
+}
+
+.dataTables_paginate .paginate_button {
+    border: none !important;
+    padding: 5px 10px !important;
+    margin: 0 5px;
+}
+
+.paginate_button:not(.disabled):hover {
+    background: #818cf8 !important;
+    opacity: 0.9;
+}
+
+main .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    color: white !important;
+    background: #818cf8 !important;
 }
 
 @media only screen and (max-width: 768px) {

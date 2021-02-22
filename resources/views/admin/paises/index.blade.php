@@ -14,9 +14,41 @@
                             <a class="btn primary-button" href="{{ route('paises.create') }}">Novo País</a>
                         </nav>
                     </header>
-                    Olá! Aqui temos uma lista de países!
+
+                    <main>
+                        <table class="app-table table text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 5%">ID</th>
+                                    <th scope="col" style="width: 20%">Nome</th>
+                                    <th scope="col" style="width: 20%">Imagem</th>
+                                    <th scope="col" style="width: 55%">Resumo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($paises as $pais)
+                                    <tr>
+                                        <th scope="row">{{ $pais->id }}</th>
+                                        <td>{{ $pais->nome }}</td>
+                                        <td>{{ $pais->imagem }}</td>
+                                        <td class="text-justify">{{ $pais->resumo }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </main>
                 </article>
             </div>
         </div>
     </div>
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable();
+        });
+
+    </script>
 </x-app-layout>
