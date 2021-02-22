@@ -69,11 +69,17 @@
         <label for="bandeira">Bandeira do País</label>
         <input type="file" name="bandeira" class="form-control-file" id="bandeira">
     </div>
+    @if (!empty($pais->bandeira))
+        <img class="preview mb-3" src="{{ url("storage/{$pais->bandeira}") }}" alt="{{ $pais->nome }}">
+    @endif
 
     <div class="form-group">
         <label for="imagem">Imagem de Apresentação</label>
         <input type="file" name="imagem" class="form-control-file" id="imagem">
     </div>
+    @if (!empty($pais->imagem))
+        <img class="preview mb-3" src="{{ url("storage/{$pais->imagem}") }}" alt="{{ $pais->nome }}">
+    @endif
 
     <div class="form-group">
         <label for="idiomas">Idiomas</label>

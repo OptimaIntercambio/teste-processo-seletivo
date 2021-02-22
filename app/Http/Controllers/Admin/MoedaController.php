@@ -141,16 +141,15 @@ class MoedaController extends Controller
             'pctChange' => $api_moeda['pctChange'],
             'bid' => $api_moeda['bid'],
             'ask' => $api_moeda['ask'],
-            'verified_date' => $api_moeda['create_date'],
         ];
 
 
         // Adiciona uma nova entrada de câmbio na tabela caso não tenha outra
         // com a mesma data de atualização.
-        $cambio = $moeda->cambio()->firstOrCreate([
+        $cambio = $moeda->cambio()->firstOrCreate($data, [
             'verified_date' => $api_moeda['create_date'],
-        ], $data);
-        
+        ]);
+
         return new Cambio($data);
     }
 

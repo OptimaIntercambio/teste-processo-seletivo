@@ -31,9 +31,13 @@
                                     <tr>
                                         <th scope="row">{{ $pais->id }}</th>
                                         <td>
-                                            <a href="{{ route('admin.paises.edit', $pais->id)}}">{{ $pais->nome }}</a>
+                                            <a
+                                                href="{{ route('admin.paises.edit', $pais->id) }}">{{ $pais->nome }}</a>
                                         </td>
-                                        <td>{{ $pais->imagem }}</td>
+                                        <td>
+                                            <img class="preview" src="{{ url("storage/{$pais->imagem}") }}"
+                                                alt="{{ $pais->nome }}">
+                                        </td>
                                         <td class="text-justify">{{ $pais->resumo }}</td>
                                         <td>
                                             <div class="btn-group">
@@ -42,8 +46,10 @@
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="{{ route('admin.paises.edit', $pais->id)}}">Editar</a>
-                                                    <form class="dropdown-item" method="POST" action="{{ route('admin.paises.destroy', $pais->id)}}">
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.paises.edit', $pais->id) }}">Editar</a>
+                                                    <form class="dropdown-item" method="POST"
+                                                        action="{{ route('admin.paises.destroy', $pais->id) }}">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="text-danger btn-link">Excluir</a>

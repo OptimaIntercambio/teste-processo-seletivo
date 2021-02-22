@@ -27,6 +27,11 @@ class FileHelper
 
     static public function createUniqueFileName($file)
     {
-        return $file->getClientOriginalName() . time() . '.' . $file->getClientOriginalExtension();
+        $fileClientName = $file->getClientOriginalName();
+
+        $filename = pathinfo($fileClientName, PATHINFO_FILENAME);
+        $extension = pathinfo($fileClientName, PATHINFO_EXTENSION);
+
+        return $filename . time() . '.' . $extension;
     }
 }

@@ -68,6 +68,7 @@ button:hover
     grid-template-columns: repeat(2, 1fr);
     gap: 50px 25px;
 }
+
 /**
 #### HEADER
 */
@@ -132,6 +133,11 @@ label .req {
 
 .app-table td, .app-table th {
     vertical-align: middle;
+}
+
+img.preview {
+    max-width: 100%;
+    max-height: 150px;
 }
 
 /**

@@ -34,8 +34,8 @@ class StoreUpdatePais extends FormRequest
             'resumo' => ['nullable', 'max:380'],
             'descricao' => ['nullable'],
 
-            'bandeira' => ['nullable', 'image', 'max:255'],
-            'imagem' => ['nullable', 'image', 'max:255'],
+            'bandeira' => ['nullable', 'image'],
+            'imagem' => ['nullable', 'image'],
             
             'populacao' => ['nullable','integer', 'min:0'],
             'pib' => ['nullable','numeric', 'min:0'],
