@@ -11,4 +11,13 @@ class Pais extends Model
 
     protected $table = 'paises';
     protected $fillable = ['nome', 'resumo', 'descricao', 'bandeira', 'imagem', 'populacao', 'pib', 'idh'];
+
+    
+    /**
+     * Os idiomas falados no pais.
+     */
+    public function idiomas()
+    {
+        return $this->belongsToMany(Idioma::class);
+    }
 }

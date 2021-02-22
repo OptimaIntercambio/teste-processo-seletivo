@@ -1,6 +1,9 @@
 /**
 #### GENERAL
 */
+body {
+    font-size: 17px;
+}
 
 a:hover,
 button:hover
@@ -55,7 +58,7 @@ button:hover
 */
 
 #page-description {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 20px;
 }
 
@@ -94,6 +97,16 @@ label .req {
     margin-bottom: 5px;
 }
 
+.dashboardcode-bsmultiselect .badge {
+    background: lightgrey;
+    font-size: 16px;
+    margin-right: 8px;
+    padding: 5px 10px !important;
+}
+
+.dashboardcode-bsmultiselect .badge span {
+    margin-right: 5px;
+}
 /**
 #### TABLES
 */

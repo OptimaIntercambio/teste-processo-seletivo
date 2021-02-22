@@ -15,6 +15,8 @@
     @csrf
     @method($method ?? 'POST')
 
+    <input type="hidden" name="id" value="{{ $pais->id ?? null }}">
+
     <div class="form-group">
         <label for="nome">Nome <span class="req">*</span></label>
         <input type="text" name="nome" id="nome" class="form-control" aria-describedby="nomeHelp"
@@ -73,5 +75,27 @@
         <input type="file" name="imagem" class="form-control-file" id="imagem">
     </div>
 
+    <div class="form-group">
+        <label for="idiomas">Idiomas</label>
+        <select multiple class="form-control" name="idiomas[]" id="idiomas">
+            @foreach ($idiomas as $idioma)
+                <option value="{{ $idioma->id }}"
+                    {{ !empty($idiomas_pais) && in_array($idioma->id, $idiomas_pais) ? 'selected' : '' }}>
+                    {{ $idioma->nome }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+
     <button class="btn primary-button block" type="submit">ENVIAR</button>
 </form>
+
+<script src="{{ asset('assets/bsmultiselect/dist/js/BsMultiSelect.min.js') }}"></script>
+
+<script>
+    $(function() {
+        // Aplica formatação no select
+        $("select[multiple]").bsMultiSelect();
+    });
+
+</script>

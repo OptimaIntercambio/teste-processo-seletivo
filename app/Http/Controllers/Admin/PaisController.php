@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePais;
+use App\Models\Idioma;
 use App\Utils\FileHelper;
 use App\Models\Pais;
 use Illuminate\Http\Request;
@@ -28,13 +29,14 @@ class PaisController extends Controller
      */
     public function create()
     {
-        return view('admin.paises.create');
+        $idiomas = Idioma::latest()->get();
+        return view('admin.paises.create', compact('idiomas'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param App\Http\Requests\StoreUpdatePais $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUpdatePais $request)
@@ -43,7 +45,10 @@ class PaisController extends Controller
         $data['bandeira'] = FileHelper::uploadFile($request, 'bandeira', 'paises');
         $data['imagem'] = FileHelper::uploadFile($request, 'imagem', 'paises');
 
-        Pais::create($data);
+        $pais = Pais::create($data);
+
+        // Salva os idiomas falados no país
+        $pais->idiomas()->attach($request->idiomas);
 
         return redirect()
             ->route('admin.paises.index')
@@ -70,17 +75,23 @@ class PaisController extends Controller
     public function edit($id)
     {
         if (!$pais = Pais::find($id)) return redirect()->back();
-        return view('admin.paises.edit', compact('pais'));
+
+        $idiomas = Idioma::latest()->get();
+        
+        // Retorna uma lista com os ids de todos os idiomas falados no país
+        $idiomas_pais = array_map(function($idioma) { return $idioma->id; }, iterator_to_array($pais->idiomas));
+
+        return view('admin.paises.edit', compact('pais', 'idiomas', 'idiomas_pais'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param App\Http\Requests\StoreUpdatePais $request
      * @param string $id Id do país
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdatePais $request, $id)
     {
         if (!$pais = Pais::find($id)) return redirect()->back();
 
@@ -91,6 +102,11 @@ class PaisController extends Controller
         $data['imagem'] = FileHelper::uploadFile($request, 'imagem', 'paises');
 
         $pais->update($data);
+
+        // Salva os idiomas falados no país
+        $pais->idiomas()->detach();
+        $pais->idiomas()->attach($request->idiomas);
+
         return redirect()
             ->route('admin.paises.index')
             ->with('message', 'País editado com sucesso!');

@@ -17,6 +17,9 @@
                 <x-nav-link href="{{ route('admin.paises.index') }}" :active="request()->routeIs('admin.paises.*')">
                     {{ __('Países') }}
                 </x-nav-link>
+                <x-nav-link href="{{ route('admin.idiomas.index') }}" :active="request()->routeIs('admin.idiomas.*')">
+                    {{ __('Idiomas') }}
+                </x-nav-link>
             </ul>
 
             <!-- Right Side Of Navbar -->

@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\{
-    PaisController
+    PaisController,
+    IdiomaController
 };
 
 /*
@@ -29,6 +30,7 @@ Route::middleware(['auth'])->group(function() {
 
     Route::prefix('admin')->name('admin.')->group(function() {
         Route::resource('paises', PaisController::class);
+        Route::resource('idiomas', IdiomaController::class);
     });
 });
 

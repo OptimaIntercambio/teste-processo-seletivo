@@ -22,8 +22,8 @@
                                     <th scope="col" style="width: 5%">ID</th>
                                     <th scope="col" style="width: 20%">Nome</th>
                                     <th scope="col" style="width: 20%">Imagem</th>
-                                    <th scope="col" style="width: 55%">Resumo</th>
-                                    <th scope="col" style="width: 55%">Ações</th>
+                                    <th scope="col" style="width: 45%">Resumo</th>
+                                    <th scope="col" style="width: 10%">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
