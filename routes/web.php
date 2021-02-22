@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\{
+    PaisController
+};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,9 +28,7 @@ Route::middleware(['auth'])->group(function() {
     })->name('dashboard');
 
     Route::prefix('admin')->group(function() {
-        Route::get('/paises', function() {
-            return view('admin.paises.index');
-        })->name('admin.paises.index');
+        Route::resource('paises', PaisController::class);
     });
 });
 

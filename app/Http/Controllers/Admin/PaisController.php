@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdatePais;
+use App\Utils\FileHelper;
 use App\Models\Pais;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class PaisController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.paises.index');
     }
 
     /**
@@ -25,7 +27,7 @@ class PaisController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.paises.create');
     }
 
     /**
@@ -34,9 +36,17 @@ class PaisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdatePais $request)
     {
-        //
+        $data = $request->all();
+        $data['bandeira'] = FileHelper::uploadFile($request, 'bandeira', 'paises');
+        $data['imagem'] = FileHelper::uploadFile($request, 'imagem', 'paises');
+
+        Pais::create($data);
+
+        return redirect()
+            ->route('paises.index')
+            ->with('message', 'Post criado com sucesso!');
     }
 
     /**

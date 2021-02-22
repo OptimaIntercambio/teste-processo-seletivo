@@ -1,0 +1,85 @@
+/**
+#### Breeze
+*/
+
+.nav-link.active {
+    border-bottom: 2px solid #818cf8;
+}
+
+/**
+#### BUTTONS
+*/
+
+.btn {
+    background: lightgrey;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 6px 12px;
+}
+
+.btn.block {
+    width: 100%;
+    font-size: 17px;
+    margin: 15px 0;
+}
+
+.primary-button {
+    background: #818cf8;
+    color: white;
+}
+
+.primary-button:hover {
+    color: white;
+    opacity: 0.9;
+}
+
+/**
+#### HEADER
+*/
+#page-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.main-header #header-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/**
+#### FORMS
+*/
+label .req {
+    color: red;
+    font-weight: bold;
+}
+
+.error-form-container {
+    padding: 10px 15px;
+    background: #818cf8;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.error-form-container .info {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.error-form-list {
+    list-style: circle;
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+    /**
+    #### Breeze
+    */
+    .nav-link {
+        margin-bottom: 2px;
+    }
+}
