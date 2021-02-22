@@ -46,8 +46,8 @@ class PaisController extends Controller
         Pais::create($data);
 
         return redirect()
-            ->route('paises.index')
-            ->with('message', 'Post criado com sucesso!');
+            ->route('admin.paises.index')
+            ->with('message', 'País criado com sucesso!');
     }
 
     /**
@@ -64,34 +64,53 @@ class PaisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pais  $pais
+     * @param string $id Id do país
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pais $pais)
+    public function edit($id)
     {
-        //
+        if (!$pais = Pais::find($id)) return redirect()->back();
+        return view('admin.paises.edit', compact('pais'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pais  $pais
+     * @param string $id Id do país
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pais $pais)
+    public function update(Request $request, $id)
     {
-        //
+        if (!$pais = Pais::find($id)) return redirect()->back();
+
+        $data = $request->all();
+
+        FileHelper::deleteFiles([$pais->bandeira, $pais->imagem]);
+        $data['bandeira'] = FileHelper::uploadFile($request, 'bandeira', 'paises');
+        $data['imagem'] = FileHelper::uploadFile($request, 'imagem', 'paises');
+
+        $pais->update($data);
+        return redirect()
+            ->route('admin.paises.index')
+            ->with('message', 'País editado com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pais  $pais
+     * @param string $id Id do país
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pais $pais)
+    public function destroy($id)
     {
-        //
+        if (!$pais = Pais::find($id)) return redirect()->route('admin.paises.index');
+
+        FileHelper::deleteFiles([$pais->bandeira, $pais->imagem]);
+        $pais->delete();
+
+        return redirect()
+            ->route('admin.paises.index')
+            ->with('message', 'País deletado com sucesso!');
     }
 }

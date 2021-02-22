@@ -13,6 +13,9 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
+
         <!-- Custom Styles -->
         <link rel="stylesheet" href="{{ asset('css/admin-style.css') }}">
 

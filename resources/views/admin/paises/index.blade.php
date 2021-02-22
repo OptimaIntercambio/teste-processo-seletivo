@@ -7,11 +7,11 @@
 
     <div class="py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white shadow-sm sm:rounded-lg">
                 <article class="p-4 bg-white border-b border-gray-200">
                     <header class="main-header">
                         <nav id="header-buttons">
-                            <a class="btn primary-button" href="{{ route('paises.create') }}">Novo País</a>
+                            <a class="btn primary-button" href="{{ route('admin.paises.create') }}">Novo País</a>
                         </nav>
                     </header>
 
@@ -23,15 +23,34 @@
                                     <th scope="col" style="width: 20%">Nome</th>
                                     <th scope="col" style="width: 20%">Imagem</th>
                                     <th scope="col" style="width: 55%">Resumo</th>
+                                    <th scope="col" style="width: 55%">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($paises as $pais)
                                     <tr>
                                         <th scope="row">{{ $pais->id }}</th>
-                                        <td>{{ $pais->nome }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.paises.edit', $pais->id)}}">{{ $pais->nome }}</a>
+                                        </td>
                                         <td>{{ $pais->imagem }}</td>
                                         <td class="text-justify">{{ $pais->resumo }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn primary-button dropdown-toggle"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="{{ route('admin.paises.edit', $pais->id)}}">Editar</a>
+                                                    <form class="dropdown-item" method="POST" action="{{ route('admin.paises.destroy', $pais->id)}}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="text-danger btn-link">Excluir</a>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

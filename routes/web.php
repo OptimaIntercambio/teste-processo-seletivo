@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function() {
         return view('admin.dashboard');
     })->name('dashboard');
 
-    Route::prefix('admin')->group(function() {
+    Route::prefix('admin')->name('admin.')->group(function() {
         Route::resource('paises', PaisController::class);
     });
 });

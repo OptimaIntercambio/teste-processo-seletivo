@@ -1,4 +1,15 @@
 /**
+#### GENERAL
+*/
+
+a:hover,
+button:hover
+{
+    text-decoration: none !important;
+    opacity: 0.9;
+}
+
+/**
 #### Breeze
 */
 
@@ -23,8 +34,14 @@
     margin: 15px 0;
 }
 
+.btn-link {
+    background: unset;
+    padding: 0;
+    border: none;
+}
+
 .primary-button {
-    background: #818cf8;
+    background: #6675ff;
     color: white;
 }
 
@@ -58,7 +75,7 @@ label .req {
 
 .error-form-container {
     padding: 10px 15px;
-    background: #818cf8;
+    background: #6675ff;
     color: white;
     border-radius: 10px;
     margin-bottom: 25px;
@@ -83,6 +100,10 @@ label .req {
 
 .app-table {
     margin-bottom: 20px !important;
+}
+
+.app-table td, .app-table th {
+    vertical-align: middle;
 }
 
 /**
@@ -114,13 +135,13 @@ main .dataTables_wrapper .dataTables_filter input:focus, main .dataTables_wrappe
 }
 
 .paginate_button:not(.disabled):hover {
-    background: #818cf8 !important;
+    background: #6675ff !important;
     opacity: 0.9;
 }
 
 main .dataTables_wrapper .dataTables_paginate .paginate_button.current {
     color: white !important;
-    background: #818cf8 !important;
+    background: #6675ff !important;
 }
 
 @media only screen and (max-width: 768px) {
