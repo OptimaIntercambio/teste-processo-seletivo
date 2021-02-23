@@ -139,16 +139,20 @@ class MoedaController extends Controller
             'low' => $api_moeda['low'],
             'varBid' => $api_moeda['varBid'],
             'pctChange' => $api_moeda['pctChange'],
-            'bid' => $api_moeda['bid'],
-            'ask' => $api_moeda['ask'],
+
+            'verified_date' => $api_moeda['create_date'],
         ];
 
+        $nao_duplicado = [
+            'bid' => number_format((float)$api_moeda['bid'], 2, '.', ''),
+            'ask' => number_format((float)$api_moeda['ask'], 2, '.', ''),
+        ];
 
         // Adiciona uma nova entrada de câmbio na tabela caso não tenha outra
         // com a mesma data de atualização.
-        $cambio = $moeda->cambio()->firstOrCreate($data, [
-            'verified_date' => $api_moeda['create_date'],
-        ]);
+        $cambio = $moeda->cambio()->firstOrNew($nao_duplicado, $data);
+
+        $cambio->save();
 
         return new Cambio($data);
     }
