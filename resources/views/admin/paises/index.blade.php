@@ -35,8 +35,10 @@
                                                 href="{{ route('admin.paises.edit', $pais->id) }}">{{ $pais->nome }}</a>
                                         </td>
                                         <td>
-                                            <img class="preview" src="{{ url("storage/{$pais->imagem}") }}"
-                                                alt="{{ $pais->nome }}">
+                                            @if (!empty($pais->imagem))
+                                                <img class="preview" src="{{ url("storage/{$pais->imagem}") }}"
+                                                    alt="{{ $pais->nome }}">
+                                            @endif
                                         </td>
                                         <td class="text-justify">{{ $pais->resumo }}</td>
                                         <td>

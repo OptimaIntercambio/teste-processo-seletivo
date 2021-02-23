@@ -82,11 +82,15 @@ class PaisController extends Controller
 
         $idiomas = Idioma::latest()->get();
         $moedas = Moeda::latest()->get();
-        
+
         // Retorna uma lista com os ids de todos os idiomas falados no país
-        $idiomas_pais = array_map(function($idioma) { return $idioma->id; }, iterator_to_array($pais->idiomas));
+        $idiomas_pais = array_map(function ($idioma) {
+            return $idioma->id;
+        }, iterator_to_array($pais->idiomas));
         // Retorna uma lista com os ids de todas as moedas usadas no país
-        $moedas_pais = array_map(function($moeda) { return $moeda->id; }, iterator_to_array($pais->moedas));
+        $moedas_pais = array_map(function ($moeda) {
+            return $moeda->id;
+        }, iterator_to_array($pais->moedas));
 
         return view('admin.paises.edit', compact('pais', 'idiomas', 'idiomas_pais', 'moedas', 'moedas_pais'));
     }
@@ -104,9 +108,19 @@ class PaisController extends Controller
 
         $data = $request->all();
 
-        FileHelper::deleteFiles([$pais->bandeira, $pais->imagem]);
-        $data['bandeira'] = FileHelper::uploadFile($request, 'bandeira', 'paises');
-        $data['imagem'] = FileHelper::uploadFile($request, 'imagem', 'paises');
+        if (!empty($request->bandeira)) {
+            FileHelper::deleteFiles([$pais->bandeira]);
+            $data['bandeira'] = FileHelper::uploadFile($request, 'bandeira', 'paises');
+        } else {
+            $data['bandeira'] = $pais->bandeira;
+        }
+        
+        if (!empty($request->imagem)) {
+            FileHelper::deleteFiles([$pais->imagem]);
+            $data['imagem'] = FileHelper::uploadFile($request, 'imagem', 'paises');
+        } else {
+            $data['imagem'] = $pais->imagem;
+        }
 
         $pais->update($data);
 
