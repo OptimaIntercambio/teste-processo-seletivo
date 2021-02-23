@@ -1,0 +1,40 @@
+####################
+INSTRUÇÕES PARA EXECUTAR O SISTEMA
+####################
+
+1) Clone o repositório em uma pasta que esteja sendo servido o PHP para o browser. Pode usar a ferramenta de preferência, como o Xampp, por exemplo.
+No caso, seria C:\new-xampp\htdocs a pasta sendo servida.
+
+	git clone https://github.com/engsisdaniel/teste-processo-seletivo.git teste-processo-seletivo
+	cd teste-processo-seletivo
+
+
+2) Na raiz do projeto, execute os comandos abaixo para instalar as dependências
+
+	composer install
+	npm install
+
+
+3) Gere uma cópia do arquivo .env.example utilizando o comando abaixo. Edite o arquivo .env para refletir as características
+do seu ambiente de desenvolvimento, em especial as variáveis de acesso ao banco.
+
+	cp .env.example .env
+	php artisan key:generate
+
+
+4) Crie o banco de dados com o nome especificado em .env (o padrão é mundonatela) com o collation 'utf8mb4_unicode_ci'.
+
+
+5) Execute o comando abaixo para gerar e popular o banco:
+
+	php artisan migrate:refresh --seed
+
+
+6) Crie um link simbólico para poder acessar as imagens:
+	
+	php artisan storage:link
+
+
+7) Acesse a URL /register para cadastrar seu usuário e começar a usar o sistema!
+
+Prontinho!
